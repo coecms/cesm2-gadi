@@ -10,7 +10,7 @@
         <DIN_LOC_ROOT>/scratch/$PROJECT/$USER/cesm2/inputs</DIN_LOC_ROOT>
         <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
         <BASELINE_ROOT>/scratch/$PROJECT/$USER/cesm2/baseline</BASELINE_ROOT>
-        <CCSM_CPRNC>/scratch/w35/saw562/scratch/cesm/cime/tools/cprnc/cprnc</CCSM_CPRNC>
+        <CCSM_CPRNC>/scratch/$PROJECT/$USER/cesm2/cime/tools/cprnc/cprnc</CCSM_CPRNC>
         <BATCH_SYSTEM>pbs</BATCH_SYSTEM>
         <SUPPORTED_BY>UNSUPPORTED</SUPPORTED_BY>
         <MAX_TASKS_PER_NODE>48</MAX_TASKS_PER_NODE>
@@ -46,7 +46,6 @@
             </modules>
         </module_system>
     <environment_variables>
-        <env name="NetCDF_DIR">/home/562/saw562/.cime</env>
         <env name="NETCDF_PATH">/apps/netcdf/4.7.3</env>
     </environment_variables>
     </machine>
