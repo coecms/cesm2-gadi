@@ -1,0 +1,53 @@
+
+<config_machines version="2.0">
+        <machine MACH="gadi">
+        <DESC>NCI Gadi</DESC>
+        <NODENAME_REGEX>gadi-login-..</NODENAME_REGEX>
+        <OS>linux</OS>
+        <COMPILERS>intel</COMPILERS>
+        <MPILIBS>openmpi,intelmpi</MPILIBS>
+        <CIME_OUTPUT_ROOT>/scratch/$PROJECT/$USER/cesm2</CIME_OUTPUT_ROOT>
+        <DIN_LOC_ROOT>/scratch/$PROJECT/$USER/cesm2/inputs</DIN_LOC_ROOT>
+        <DOUT_S_ROOT>$CIME_OUTPUT_ROOT/archive/$CASE</DOUT_S_ROOT>
+        <BASELINE_ROOT>/scratch/$PROJECT/$USER/cesm2/baseline</BASELINE_ROOT>
+        <CCSM_CPRNC>/scratch/w35/saw562/scratch/cesm/cime/tools/cprnc/cprnc</CCSM_CPRNC>
+        <BATCH_SYSTEM>pbs</BATCH_SYSTEM>
+        <SUPPORTED_BY>CLEX CMS climate_help@nci.org.au</SUPPORTED_BY>
+        <MAX_TASKS_PER_NODE>48</MAX_TASKS_PER_NODE>
+        <MAX_MPITASKS_PER_NODE>48</MAX_MPITASKS_PER_NODE>
+        <mpirun mpilib="openmpi">
+            <executable>mpirun</executable>
+            <arguments>
+                <arg name="num_tasks">-n {{ total_tasks }}</arg>
+            </arguments>
+        </mpirun>
+        <module_system type="module">
+            <cmd_path lang="sh">module</cmd_path>
+            <cmd_path lang="csh">module</cmd_path>
+            <cmd_path lang="python">/opt/Modules/v4.3.0/libexec/modulecmd.tcl python</cmd_path>
+            <cmd_path lang="perl">/opt/Modules/v4.3.0/libexec/modulecmd.tcl perl</cmd_path>
+            <modules><command name="purge"/></modules>
+            <modules>
+                <command name="load">intel-mkl/2019.3.199</command>
+                <command name="load">python3</command>
+                <command name="load">python3-as-python</command>
+                <command name="load">netcdf/4.7.3</command>
+                <command name="load">cmake/3.16.2</command>
+                <command name="load">pbs</command>
+            </modules>
+            <modules compiler="intel">
+                <command name="load">intel-compiler/2020.1.217</command>
+            </modules>
+            <modules compiler="intel" mpilib="openmpi">
+                <command name="load">openmpi/4.0.2</command>
+            </modules>
+            <modules mpilib="intelmpi">
+                <command name="load">intel-mpi/2020.1.217</command>
+            </modules>
+        </module_system>
+    <environment_variables>
+        <env name="NetCDF_DIR">/home/562/saw562/.cime</env>
+        <env name="NETCDF_PATH">/apps/netcdf/4.7.3</env>
+    </environment_variables>
+    </machine>
+</config_machines>
