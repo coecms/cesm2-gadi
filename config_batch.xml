@@ -7,6 +7,9 @@
       <arg flag="-l ncpus=" name=" $TOTALPES"/>
       <arg flag="-l mem=" name=" $TOTALPES*4*1024**3"/>
     </submit_args>
+    <directives>
+        <directive>-l storage=gdata/hh5</directive>
+    </directives>
     <queues>
       <queue walltimemax="12:00:00" nodemin="1" nodemax="50" default="true">normal</queue>
       <queue walltimemax="03:00:00" nodemin="1" nodemax="4">express</queue>
